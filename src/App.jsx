@@ -48,7 +48,7 @@ function App() {
           </div>
           <div className="mt-9">
             <input
-              className=" focus:outline-none md:h-14 md:w-72 text-lg text-center font-bold border-2 h-12 w-72 sm:placeholder:text-xs rounded-md border-yellow-300 bg-slate-600 text-yellow-300 placeholder:font-medium md:text-lg md:placeholder:text-xl  placeholder:text-gray-400 placeholder:capitalize"
+              className=" focus:outline-none md:h-14 md:w-72 text-base text-center font-bold border-2 h-12 w-72 sm:placeholder:text-xs rounded-md border-yellow-300 bg-slate-600 text-yellow-300 placeholder:font-medium md:text-lg md:placeholder:text-xl  placeholder:text-gray-400 placeholder:capitalize"
               type="text"
               placeholder="enter numbers between 0-150"
               id="number"
