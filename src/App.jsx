@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 function App() {
-  let pokemon_name, image_url;
+  let pokemon_name, image_url, pokemon_sound;
   const [number, setnumber] = useState();
   const [name, setname] = useState("");
   const [rank, setrank] = useState("");
+  const [sound, setsound] = useState("");
   const [image, setimage] = useState(
     "https://cdn.worldvectorlogo.com/logos/pokemon-23.svg"
   );
@@ -16,35 +17,38 @@ function App() {
         fetch(details_object["url"]).then((url) => {
           url.json().then((url_converted) => {
             pokemon_name = url_converted["name"];
+            pokemon_sound = url_converted["cries"]["latest"];
             image_url =
               url_converted["sprites"]["other"]["dream_world"]["front_default"];
             setrank(`rank : ${number}`);
             setname(`pokemon name : ${pokemon_name}`);
+            setsound(pokemon_sound);
             setimage(image_url);
           });
         });
       });
     });
   }
-  
+
   return (
     <>
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="flex justify-center items-center">
-            <img src={image} alt="" className="md:w-80 md:h-80 w-48 h-48  " />
+            <img src={image} alt="" className="md:w-80 md:h-80 w-52 h-52  " />
           </div>
           <div className="mt-10">
-            <h3 className="text-white uppercase font-bold md:text-lg text-base">
+            <h3 className="text-white uppercase font-bold md:text-lg text-lg">
               {rank}
             </h3>
-            <h1 className="text-white uppercase font-bold md:text-2xl" text-lg>
+            <h1 className="text-white uppercase font-bold md:text-2xl text-xl" >
               {name}
             </h1>
+            <audio src={sound} autoPlay></audio>
           </div>
           <div className="mt-9">
             <input
-              className=" focus:outline-none md:h-14 md:w-72  text-center font-bold border-2 h-10 w-60 sm:placeholder:text-xs rounded-md border-yellow-300 bg-slate-600 text-yellow-300 placeholder:font-medium md:text-lg md:placeholder:text-lg  placeholder:text-gray-400 placeholder:capitalize"
+              className=" focus:outline-none md:h-14 md:w-72  text-center font-bold border-2 h-10 w-64 sm:placeholder:text-xs rounded-md border-yellow-300 bg-slate-600 text-yellow-300 placeholder:font-medium md:text-lg md:placeholder:text-lg  placeholder:text-gray-400 placeholder:capitalize"
               type="text"
               placeholder="enter numbers between 0-150"
               id="number"
