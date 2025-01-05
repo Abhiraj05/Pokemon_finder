@@ -35,7 +35,7 @@ function App() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="flex justify-center items-center">
-            <img src={image} alt="" className="md:w-80 md:h-80 w-52 h-52  " />
+            <img src={image} alt="" className="md:w-80 md:h-80 w-56 h-56  " />
           </div>
           <div className="mt-10">
             <h3 className="text-white uppercase font-bold md:text-lg text-lg">
