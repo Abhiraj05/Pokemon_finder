@@ -58,7 +58,7 @@ function App() {
           <div className="mt-10">
             <button
               onClick={btn}
-              className="text-white font-sans bg-red-500 md:p-3 uppercase md:text-base rounded-md font-bold text-base p-3 w-24 h-12 md:w-28 md:h-14 border-2 border-slate-200"
+              className="text-white font-sans bg-red-500 md:p-3 uppercase md:text-base rounded-md font-bold text-sm p-3 w-24 h-12 md:w-28 md:h-14 border-2 border-slate-200"
             >
               get data
             </button>
