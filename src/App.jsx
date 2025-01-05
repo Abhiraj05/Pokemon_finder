@@ -48,7 +48,7 @@ function App() {
           </div>
           <div className="mt-9">
             <input
-              className=" focus:outline-none md:h-14 md:w-72  text-center font-bold border-2 h-10 w-64 sm:placeholder:text-xs rounded-md border-yellow-300 bg-slate-600 text-yellow-300 placeholder:font-medium md:text-lg md:placeholder:text-lg  placeholder:text-gray-400 placeholder:capitalize"
+              className=" focus:outline-none md:h-14 md:w-72  text-center font-bold border-2 h-12 w-72 sm:placeholder:text-xs rounded-md border-yellow-300 bg-slate-600 text-yellow-300 placeholder:font-medium md:text-lg md:placeholder:text-lg  placeholder:text-gray-400 placeholder:capitalize"
               type="text"
               placeholder="enter numbers between 0-150"
               id="number"
@@ -58,7 +58,7 @@ function App() {
           <div className="mt-10">
             <button
               onClick={btn}
-              className="text-white font-sans bg-red-500 md:p-3 uppercase md:text-base rounded-md font-bold text-xs p-3 md:w-28 md:h-14 border-2 border-slate-200"
+              className="text-white font-sans bg-red-500 md:p-3 uppercase md:text-base rounded-md font-bold text-base p-3 w-24 h-12 md:w-28 md:h-14 border-2 border-slate-200"
             >
               get data
             </button>
