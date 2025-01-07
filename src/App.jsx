@@ -1,33 +1,46 @@
 import { useState } from "react";
+import Spinner from "./Spinner.jsx";
 
 function App() {
+  //variables & usestate
   let pokemon_name, image_url, pokemon_sound;
   const [number, setnumber] = useState();
   const [name, setname] = useState("");
   const [rank, setrank] = useState("");
   const [sound, setsound] = useState("");
+  const [spinnervisbility, setspinner] = useState(false);
   const [image, setimage] = useState(
     "https://cdn.worldvectorlogo.com/logos/pokemon-23.svg"
   );
 
+//data fetching
   function btn() {
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=151").then((data) => {
-      data.json().then((converted_data) => {
-        const details_object = converted_data["results"][number];
-        fetch(details_object["url"]).then((url) => {
-          url.json().then((url_converted) => {
-            pokemon_name = url_converted["name"];
-            pokemon_sound = url_converted["cries"]["latest"];
-            image_url =
-              url_converted["sprites"]["other"]["dream_world"]["front_default"];
-            setrank(`rank : ${number}`);
-            setname(`pokemon name : ${pokemon_name}`);
-            setsound(pokemon_sound);
-            setimage(image_url);
+    if (!isNaN(number)) {
+      setspinner(true);
+     const set_interval= setInterval(() => {
+      fetch("https://pokeapi.co/api/v2/pokemon/?limit=151").then((data) => {
+        data.json().then((converted_data) => {
+          const details_object = converted_data["results"][number];
+          fetch(details_object["url"]).then((url) => {
+            url.json().then((url_converted) => {
+              pokemon_name = url_converted["name"];
+              pokemon_sound = url_converted["cries"]["latest"];
+              image_url =
+                url_converted["sprites"]["other"]["dream_world"][
+                  "front_default"
+                ];
+              setrank(`rank : ${number}`);
+              setname(`pokemon name : ${pokemon_name}`);
+              setsound(pokemon_sound);
+              setimage(image_url);
+              setspinner(false);
+              clearInterval(set_interval)
+            });
           });
         });
       });
-    });
+      }, 3000);
+    }
   }
 
   return (
@@ -41,7 +54,7 @@ function App() {
             <h3 className="text-white uppercase font-bold md:text-lg text-lg">
               {rank}
             </h3>
-            <h1 className="text-white uppercase font-bold md:text-2xl text-xl" >
+            <h1 className="text-white uppercase font-bold md:text-2xl text-xl">
               {name}
             </h1>
             <audio src={sound} autoPlay></audio>
@@ -70,6 +83,7 @@ function App() {
           made with &#10084; by abhiraj
         </p>
       </div>
+      <div>{spinnervisbility && <Spinner />}</div>
     </>
   );
 }
